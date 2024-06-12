@@ -1,25 +1,40 @@
 import { useState } from "react";
 import Button from "../UI/Button";
 import Card from "../UI/Card";
-const AddWorker = () => {
+import ErrorModal from "../UI/ErrorModal";
+const AddWorker = (props) => {
   const [enteredWorkerName, setEnteredWorkerName] = useState("");
   const [enteredWage, setEnteredWage] = useState("");
-  const minimumWage = 5000
+  const minimumWage = 5000;
 
   const addWorkerHandler = (e) => {
     e.preventDefault(); //sayfanın yenilenmesini engelliyor
-    if (enteredWorkerName.trim().length === 0 || enteredWage.trim().length === 0) {
+    if (
+      enteredWorkerName.trim().length === 0 ||
+      enteredWage.trim().length === 0
+    ) {
       return;
       //+ numbere çeviriyor
-    }if(+enteredWage < minimumWage){
+    }
+    if (+enteredWage < minimumWage) {
       console.log(`Minimum tutar olan ${minimumWage} altında giriş yaptınız`);
     }
+
+    props.setWorkers((prevState) => [
+      {
+        id: Math.floor(Math.random() * 1000),
+        name: enteredWorkerName,
+        wage: enteredWage,
+      },
+      ...prevState,
+    ]);
     setEnteredWorkerName("");
     setEnteredWage("");
-    console.log(enteredWorkerName + " " + enteredWage);
   };
   return (
-    <Card className=" mt-10">
+    <div>
+      <ErrorModal />
+      <Card className=" mt-10">
       <form className="flex flex-col gap-y-2" onSubmit={addWorkerHandler}>
         <label htmlFor="name" className="font-medium">
           Çalışan İsmi
@@ -48,6 +63,8 @@ const AddWorker = () => {
         </Button>
       </form>
     </Card>
+    
+    </div>
   );
 };
 
