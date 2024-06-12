@@ -3,9 +3,10 @@
 @tailwind utilities;
 
 html{
-    @apply text-[125%]
+    @apply text-[125%];
 }
 
 body{
-    @apply bg-black w-1/3 mx-auto
+    @apply bg-black w-1/3 mx-auto;
 }
+
