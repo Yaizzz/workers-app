@@ -10,13 +10,11 @@ const AddWorker = (props) => {
 
   const addWorkerHandler = (e) => {
     e.preventDefault(); //sayfanın yenilenmesini engelliyor
-    if (
-      enteredWorkerName.trim().length === 0
-    ) {
+    if (enteredWorkerName.trim().length === 0) {
       setError({
         title: "İsim alanı zounludur",
-        message: "Lütfen bir isim giriniz"
-      })
+        message: "Lütfen bir isim giriniz",
+      });
       return;
       //+ numbere çeviriyor
     }
@@ -39,42 +37,44 @@ const AddWorker = (props) => {
     setEnteredWorkerName("");
     setEnteredWage("");
   };
+  //bu errorun içini boşaltıyor errormodalda yer alan butona veya blurlu yere tıklanınca
+  //error boş oluyor ve true ise çalışacak olan yer çalışmıyor
   const errorHandler = () => {
-    setError(null)
-  }
+    setError(null);
+  };
   return (
     <div>
-      {error && <ErrorModal onConfirm = {errorHandler} error = {error}/> }
+      {/* error true ise şunu çalıştır dedik*/}
+      {error && <ErrorModal onConfirm={errorHandler} error={error} />}
       <Card className=" mt-10">
-      <form className="flex flex-col gap-y-2" onSubmit={addWorkerHandler}>
-        <label htmlFor="name" className="font-medium">
-          Çalışan İsmi
-        </label>
-        <input
-          type="text"
-          className="max-w-[40rem] w-full mx-auto border p-2"
-          placeholder="Çalışan ismi yazınız"
-          id="name"
-          onChange={(e) => setEnteredWorkerName(e.target.value)}
-          value={enteredWorkerName}
-        />
-        <label htmlFor="wage" className="font-medium">
-          Maaş Miktarı
-        </label>
-        <input
-          type="number"
-          className="max-w-[40rem] w-full mx-auto border p-2"
-          placeholder="Maaş miktarı yazınız"
-          id="wage"
-          onChange={(e) => setEnteredWage(e.target.value)}
-          value={enteredWage}
-        />
-        <Button className="mt-2" type="submit">
-          Ekle
-        </Button>
-      </form>
-    </Card>
-    
+        <form className="flex flex-col gap-y-2" onSubmit={addWorkerHandler}>
+          <label htmlFor="name" className="font-medium">
+            Çalışan İsmi
+          </label>
+          <input
+            type="text"
+            className="max-w-[40rem] w-full mx-auto border p-2"
+            placeholder="Çalışan ismi yazınız"
+            id="name"
+            onChange={(e) => setEnteredWorkerName(e.target.value)}
+            value={enteredWorkerName}
+          />
+          <label htmlFor="wage" className="font-medium">
+            Maaş Miktarı
+          </label>
+          <input
+            type="number"
+            className="max-w-[40rem] w-full mx-auto border p-2"
+            placeholder="Maaş miktarı yazınız"
+            id="wage"
+            onChange={(e) => setEnteredWage(e.target.value)}
+            value={enteredWage}
+          />
+          <Button className="mt-2" type="submit">
+            Ekle
+          </Button>
+        </form>
+      </Card>
     </div>
   );
 };

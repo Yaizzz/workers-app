@@ -11,6 +11,7 @@ const WorkerList = (props) => {
 
 
   //filter burada tıklanan id yi aldı id ile eğer id tıklanan id değilse döndür dedik
+  //item her dönülen değeri temsil eder
   const deleteWorker = (id) => {
     setWorkers(
       workers.filter((item) => item.id !== id)
