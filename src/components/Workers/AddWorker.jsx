@@ -1,4 +1,4 @@
-import { useState } from "react";
+import React ,{ useState } from "react";
 import Button from "../UI/Button";
 import Card from "../UI/Card";
 import ErrorModal from "../UI/ErrorModal";
@@ -44,6 +44,8 @@ const AddWorker = (props) => {
     setError(null);
   };
   return (
+    //<></> sarmalayıcı olarak boş da yapılabilir
+    //<React.Fragment></React.Fragment> bu da bir çözümdür biriken divler için
     <Wrapper>
       {/* error true ise şunu çalıştır dedik*/}
       {error && <ErrorModal onConfirm={errorHandler} error={error} />}
