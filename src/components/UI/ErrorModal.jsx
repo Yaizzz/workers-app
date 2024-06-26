@@ -8,7 +8,7 @@ const ErrorModal = (props) => {
         className="backdrop-blur-sm bg-white/30 fixed w-screen h-screen top-0"
         onClick={props.onConfirm}
       ></div>
-      <Card className="w-[36rem] p-0 z-20">
+      <Card className="w-[36rem] !p-0 z-20">
         <header className="bg-red-700 p-4 rounded-t-xl">
           <h2 className="text-center text-xl text-white">
             {props.error.title}
