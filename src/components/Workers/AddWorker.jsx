@@ -9,9 +9,13 @@ const AddWorker = (props) => {
   const wageInputRef = useRef();
   const minimumWage = 5000;
 
+  //bir kere çalış uygulama yüklenince başka çalışma dedik normalde yazsak bu component her render edildiğinde
+  //ekleme silme vb console.log çalışırdı
   useEffect(() => {
-
+    console.log("çalıştı")
   },[])
+  //bağımlılık depend reactte eğer uygulama ilk çağırılınca mı yoksa belirli statelere bağlı mı çalışsın 
+  //mesela uygulama açıldığında veriyi 1 kere çeksin 
 
   const addWorkerHandler = (e) => {
     e.preventDefault();//sayfanın yenilenmesini engelliyor
