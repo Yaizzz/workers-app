@@ -64,7 +64,7 @@ const AddWorker = (props) => {
     //<React.Fragment></React.Fragment> bu da bir çözümdür biriken divler için
     <Wrapper>
       {/* error true ise şunu çalıştır dedik*/}
-      {error && <ErrorModal onConfirm={errorHandler} error={error} />}
+      {error && <ErrorModal onConfirm={errorHandler} error={error} setWorkers={props.setWorkers} />}
       <Card className=" mt-10">
         <form className="flex flex-col gap-y-2" onSubmit={addWorkerHandler}>
           <label htmlFor="name" className="font-medium">

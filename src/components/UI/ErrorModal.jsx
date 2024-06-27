@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useEffect, useRef } from "react";
 import Button from "./Button";
 import Card from "./Card";
 import ReactDOM from "react-dom";
@@ -31,8 +31,27 @@ const ModalOverlay = (props) => {
 };
 
 const ErrorModal = (props) => {
-  const { onConfirm, error } = props;
+  const { onConfirm, error, setWorkers } = props;
   const { title, message } = error;
+  const cleanupRef = useRef();
+  useEffect(() => {
+    console.log("error modal oluşturuldu");
+    return () => {
+      if (cleanupRef.current) {
+        console.log("error modal kaldırıldı");
+        setWorkers([]);
+      }
+    };
+  }, [cleanupRef, setWorkers]);
+
+  //sadece component kaldırıldığında çalışacak
+  //alttaki kod olmadan error modal oluşturulduğunda modal kaldırıldı diyordu
+  //bunu şarta bağladık ve sadece error modal kapanınca true yapsın üstteki çalışsın dedik
+  useEffect(() => {
+    return () => {
+      cleanupRef.current = true;
+    };
+  }, []);
   return (
     <React.Fragment>
       {ReactDOM.createPortal(
