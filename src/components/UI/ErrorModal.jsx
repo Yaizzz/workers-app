@@ -34,8 +34,10 @@ const ErrorModal = (props) => {
   const { onConfirm, error, setWorkers } = props;
   const { title, message } = error;
   const cleanupRef = useRef();
+
   useEffect(() => {
     console.log("error modal oluşturuldu");
+    
     return () => {
       if (cleanupRef.current) {
         console.log("error modal kaldırıldı");

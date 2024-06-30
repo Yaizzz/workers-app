@@ -14,6 +14,7 @@ const WorkerList = (props) => {
   //item her dönülen değeri temsil eder
   const deleteWorker = (id) => {
     setWorkers(
+      //The filter() method creates a new array filled with elements that pass a test provided by a function.
       workers.filter((item) => item.id !== id)
     );
   };
